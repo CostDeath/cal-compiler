@@ -1,5 +1,5 @@
 int multiply (x:int, y:int) is
-    //variable result: int;
+    variable result: int;
     variable minus_sign: bool;
 begin
     // figure out sign of result and convert args to absolute values

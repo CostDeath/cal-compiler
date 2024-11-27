@@ -1,52 +1,66 @@
+import error.DuplicatedVariableError;
+import error.SemanticError;
 import gen.calBaseVisitor;
 import gen.calParser.Const_declContext;
 import gen.calParser.ProgContext;
 import gen.calParser.Var_declContext;
+import model.CalVar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-public class CalVisitor extends calBaseVisitor<Integer> {
+public class CalVisitor extends calBaseVisitor<CalVar<?>> {
     Map<String, CalVar<?>> symbolTable = new HashMap<>();
-    Scanner sc = new Scanner(System.in);
+    List<SemanticError> errors = new ArrayList<>();
 
     @Override
-    public Integer visitProg (ProgContext ctx) {
+    public CalVar<?> visitProg (ProgContext ctx) {
         visitChildren(ctx);
-        System.out.println(symbolTable.keySet());
-        return 0;
+        if(!errors.isEmpty()) errors.forEach((err) -> System.out.println(err.getMessage()));
+        else System.out.println(symbolTable.keySet());
+        return null;
     }
 
     @Override
-    public Integer visitVar_decl (Var_declContext ctx) {
-        switch(ctx.var_type().getText().toLowerCase()) {
-            case "int":
-                symbolTable.put(ctx.IDENTIFIER().getText(), new CalVar<Integer>());
-                break;
-            case "bool":
-                symbolTable.put(ctx.IDENTIFIER().getText(), new CalVar<Boolean>());
-                break;
-            default:
-                return 1;
+    public CalVar<?> visitVar_decl (Var_declContext ctx) {
+        String varName = ctx.IDENTIFIER().getText();
+        if(symbolTable.containsKey(varName)) {
+            errors.add(new DuplicatedVariableError(ctx));
+            return null;
         }
 
-        return 0;
+        switch(ctx.var_type().getText().toLowerCase()) {
+            case "int" -> symbolTable.put(varName, new CalVar<Integer>());
+            case "bool" -> symbolTable.put(varName, new CalVar<Boolean>());
+        }
+
+        return null;
     }
 
     @Override
-    public Integer visitConst_decl (Const_declContext ctx) {
-//        if(ctx.)
-//        switch(ctx.var_type().getText().toLowerCase()) {
-//            case "int":
-//                symbolTable.put(ctx.IDENTIFIER().getText(), new CalVar<Integer>());
-//                break;
-//            case "bool":
-//                symbolTable.put(ctx.IDENTIFIER().getText(), new CalVar<Boolean>());
-//                break;
-//            default:
-//                return 1;
-//        }
+    public CalVar<?> visitConst_decl (Const_declContext ctx) {
+        String varName = ctx.IDENTIFIER().getText();
+        if(symbolTable.containsKey(varName)) {
+            errors.add(new DuplicatedVariableError(ctx));
+            return null;
+        }
+
+        if(ctx.Int().getText().isEmpty()) symbolTable.put(varName, visit(ctx.BOOL()));
+
+        return null;
+    }
+
+    @Override
+    public Integer visitBOOL ( ctx) {
+        String varName = ctx.IDENTIFIER().getText();
+        if(symbolTable.containsKey(varName)) {
+            errors.add(new DuplicatedVariableError(ctx));
+            return 1;
+        }
+
+        if(ctx.Int().getText().isEmpty()) symbolTable.put(varName, visit(ctx.BOOL()));
 
         return 0;
     }

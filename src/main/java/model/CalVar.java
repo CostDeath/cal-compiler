@@ -1,3 +1,5 @@
+package model;
+
 public class CalVar<T> {
     private T value;
     private boolean isVar;
