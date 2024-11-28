@@ -7,6 +7,7 @@ public class GenericError implements SemanticError {
     private final String line;
     private static final String RED = "\u001B[31m";
     private static final String YELLOW = "\u001B[33m";
+    private static final String RESET = "\u001B[0m";
     private static final String defaultMessage = "A semantic error occurred on line %s";
 
     public GenericError(ParserRuleContext ctx) {
@@ -38,6 +39,7 @@ public class GenericError implements SemanticError {
                 this.message +
                 "\n" +
                 YELLOW +
-                this.line;
+                this.line +
+                RESET;
     }
 }

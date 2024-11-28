@@ -1,3 +1,8 @@
+constant we: int := 10;
+constant wer: bool := true;
+variable are: int;
+variable here: bool;
+
 int multiply (x:int, y:int) is
     //variable result: int;
     variable minus_sign: bool;

@@ -44,21 +44,23 @@ return_stm:     Return LOB exp ROB SEMICOLON
               | Return LOB cond ROB SEMICOLON;
 
 exp:            LOB exp ROB
-              | frag arith_op frag
+              | exp arith_op exp
               | func_call
               | frag;
 cond:           LOB cond ROB
               | exp comp_op exp
-              | cond ('&' | '|') cond
+              | cond (AND | OR | EQ) cond
               | NOT cond
-              | exp;
+              | func_call
+              | BOOL
+              | IDENTIFIER;
 
 func_call: IDENTIFIER LOB args? ROB;
 arith_op: PLUS | MINUS;
 comp_op: EQ | NEQ | LT | LTE | GT | GTE;
 args:    IDENTIFIER',' args
        | IDENTIFIER;
-frag: NUM | BOOL | IDENTIFIER | '-'IDENTIFIER;
+frag: NUM | IDENTIFIER | '-'IDENTIFIER;
 BOOL: True | False;
 
 // Reserved keywords

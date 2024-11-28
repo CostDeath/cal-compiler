@@ -1,4 +1,4 @@
-package gen;// Generated from C:/Users/Cost/IdeaProjects/csc1100-symmetric-encryption/cal-compiler/src/main/java/cal.g4 by ANTLR 4.13.2
+package gen;// Generated from /home/cost/IdeaProjects/cal-compiler/src/main/java/cal.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

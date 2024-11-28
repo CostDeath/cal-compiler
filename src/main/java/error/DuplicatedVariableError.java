@@ -1,13 +1,13 @@
 package error;
 
-import gen.calParser;
+import gen.calParser.*;
 
 public class DuplicatedVariableError extends GenericError {
     private static final String defaultMessage =
             "Duplicated variable '%s' at: Line %s, char %s";
 
 
-    public DuplicatedVariableError(calParser.Var_declContext ctx) {
+    public DuplicatedVariableError(Var_declContext ctx) {
         super(String.format(defaultMessage,
                 ctx.IDENTIFIER().getText(),
                 ctx.IDENTIFIER().getSymbol().getLine(),
@@ -15,7 +15,7 @@ public class DuplicatedVariableError extends GenericError {
         ), getErrorLine(ctx));
     }
 
-    public DuplicatedVariableError(calParser.Const_declContext ctx) {
+    public DuplicatedVariableError(Const_declContext ctx) {
         super(String.format(defaultMessage,
                 ctx.IDENTIFIER().getText(),
                 ctx.IDENTIFIER().getSymbol().getLine(),
