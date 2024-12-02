@@ -1,4 +1,4 @@
-package gen;// Generated from /home/cost/IdeaProjects/cal-compiler/src/main/java/cal.g4 by ANTLR 4.13.2
+package gen;// Generated from C:/Users/Cost/IdeaProjects/csc1100-symmetric-encryption/cal-compiler/src/main/java/cal.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -45,8 +45,8 @@ public class calLexer extends Lexer {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, "','", "';'", "':'", 
-			"':='", "'('", "')'", "'+'", "'-'", "'\\u223C'", "'|'", "'&'", "'='", 
-			"'!='", "'<'", "'<='", "'>'", "'>='"
+			"':='", "'('", "')'", "'+'", "'-'", "'~'", "'|'", "'&'", "'='", "'!='", 
+			"'<'", "'<='", "'>'", "'>='"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -300,10 +300,10 @@ public class calLexer extends Lexer {
 		"\u0000\u0000\u0000\u011d\u011e\u0005)\u0000\u0000\u011e\\\u0001\u0000"+
 		"\u0000\u0000\u011f\u0120\u0005+\u0000\u0000\u0120^\u0001\u0000\u0000\u0000"+
 		"\u0121\u0122\u0005-\u0000\u0000\u0122`\u0001\u0000\u0000\u0000\u0123\u0124"+
-		"\u0005\u223c\u0000\u0000\u0124b\u0001\u0000\u0000\u0000\u0125\u0126\u0005"+
-		"|\u0000\u0000\u0126d\u0001\u0000\u0000\u0000\u0127\u0128\u0005&\u0000"+
-		"\u0000\u0128f\u0001\u0000\u0000\u0000\u0129\u012a\u0005=\u0000\u0000\u012a"+
-		"h\u0001\u0000\u0000\u0000\u012b\u012c\u0005!\u0000\u0000\u012c\u012d\u0005"+
+		"\u0005~\u0000\u0000\u0124b\u0001\u0000\u0000\u0000\u0125\u0126\u0005|"+
+		"\u0000\u0000\u0126d\u0001\u0000\u0000\u0000\u0127\u0128\u0005&\u0000\u0000"+
+		"\u0128f\u0001\u0000\u0000\u0000\u0129\u012a\u0005=\u0000\u0000\u012ah"+
+		"\u0001\u0000\u0000\u0000\u012b\u012c\u0005!\u0000\u0000\u012c\u012d\u0005"+
 		"=\u0000\u0000\u012dj\u0001\u0000\u0000\u0000\u012e\u012f\u0005<\u0000"+
 		"\u0000\u012fl\u0001\u0000\u0000\u0000\u0130\u0131\u0005<\u0000\u0000\u0131"+
 		"\u0132\u0005=\u0000\u0000\u0132n\u0001\u0000\u0000\u0000\u0133\u0134\u0005"+

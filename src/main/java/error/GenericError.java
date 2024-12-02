@@ -22,7 +22,7 @@ public class GenericError implements SemanticError {
 
     public static String getErrorLine(ParserRuleContext ctx) {
         StringBuilder lineBuilder = new StringBuilder();
-        for(int i = 0; i < ctx.getChildCount(); i++) {
+        for (int i = 0; i < ctx.getChildCount(); i++) {
             lineBuilder.append(ctx.getChild(i).getText());
             lineBuilder.append(" ");
         }
@@ -30,7 +30,7 @@ public class GenericError implements SemanticError {
                 .replace(" ;", ";")
                 .trim()
                 .concat("\n");
-        return line.concat("^".repeat(line.length()-1));
+        return line.concat("^".repeat(line.length() - 1));
     }
 
     @Override

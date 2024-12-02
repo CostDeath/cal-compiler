@@ -1,10 +1,5 @@
-constant we: int := 10;
-constant wer: bool := true;
-variable are: int;
-variable here: bool;
-
 int multiply (x:int, y:int) is
-    //variable result: int;
+    variable result: int;
     variable minus_sign: bool;
 begin
     // figure out sign of result and convert args to absolute values

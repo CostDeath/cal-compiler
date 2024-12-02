@@ -3,19 +3,22 @@ package util;
 import java.lang.reflect.Type;
 
 public abstract class TypeUtils {
-    public static Type getTypeFromRaw(String raw) {
-        if(raw.matches("[0-9]+")) return Integer.class;
-        else if (raw.matches("(true | false)")) return Boolean.class;
-        return String.class;
-    }
-
     public static Type getTypeFromName(String name) {
-        return switch(name) {
+        return switch (name) {
             case "int" -> Integer.class;
-            case "boolean" -> Boolean.class;
+            case "bool" -> Boolean.class;
+            case "void" -> Void.class;
             default -> String.class;
         };
     }
 
-    //public static CalVar<Boolean>
+    public static String getNameFromType(Type type) {
+        return switch (type.getTypeName()) {
+            case "java.lang.Integer" -> "int";
+            case "java.lang.Boolean" -> "bool";
+            case "java.lang.Void" -> "void";
+            default -> "unknown";
+        };
+    }
+
 }

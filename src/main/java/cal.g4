@@ -41,7 +41,8 @@ if_stm:         If cond Begin stm_blk? End Else Begin stm_blk? End
 while_stm:      While cond Begin stm_blk End;
 skip_stm:       Skip SEMICOLON;
 return_stm:     Return LOB exp ROB SEMICOLON
-              | Return LOB cond ROB SEMICOLON;
+              | Return LOB cond ROB SEMICOLON
+              | Return LOB ROB SEMICOLON;
 
 exp:            LOB exp ROB
               | exp arith_op exp
@@ -118,7 +119,7 @@ LOB:        '(';
 ROB:        ')';
 PLUS:       '+';
 MINUS:      '-';
-NOT:        '∼';
+NOT:        '~';
 OR:         '|';
 AND:        '&';
 EQ:         '=';

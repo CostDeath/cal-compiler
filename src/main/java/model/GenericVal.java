@@ -13,7 +13,7 @@ public class GenericVal<T> {
 
     @Override
     public String toString() {
-        if(value != null) return value.toString();
+        if (value != null) return value.toString();
         return "null";
     }
 }
